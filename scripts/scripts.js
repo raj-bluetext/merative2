@@ -498,6 +498,38 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateMarketo(main);
+  (function (win, doc, style, timeout) {
+    const STYLE_ID = 'at-body-style';
+
+    function getParent() {
+      return doc.getElementsByTagName('head')[0];
+    }
+
+    function addStyle(parent, id, def) {
+      if (!parent) {
+        return;
+      }
+      const styleEl = doc.createElement('style');
+      styleEl.id = id;
+      styleEl.innerHTML = def;
+      parent.appendChild(styleEl);
+    }
+
+    function removeStyle(parent, id) {
+      if (!parent) {
+        return;
+      }
+      const styleEl = doc.getElementById(id);
+      if (!styleEl) {
+        return;
+      }
+      parent.removeChild(styleEl);
+    }
+    addStyle(getParent(), STYLE_ID, style);
+    setTimeout(() => {
+      removeStyle(getParent(), STYLE_ID);
+    }, timeout);
+  }(window, document, 'body {opacity: 0 !important}', 3000));
 }
 
 /**
