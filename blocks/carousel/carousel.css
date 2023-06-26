@@ -75,26 +75,31 @@
 .carousel .carousel-nav {
     opacity: 0;
     z-index: 2;
-    top: 125px;
-    height: 54px;
-    width: 54px;
+    top: 32px;
+    height: 100px;
+    width: 50px;
     position: absolute;
     transition: 0.5s;
     cursor: pointer;
-    background: url('../../icons/testimonial.svg');
 }
 
 .carousel .carousel-nav:hover {
-    background: url('../../icons/testimonial-hover.svg');
+    background: url('../../icons/testimonial-hover-next.svg');
 }
 
 .carousel .carousel-nav-prev {
     left: 0;
-    transform: rotate(180deg);
+    z-index: 2;
+    background: url('../../icons/testimonial-prev.svg');
+}
+
+.carousel .carousel-nav-prev:hover {
+    background: url('../../icons/testimonial-hover-prev.svg');
 }
 
 .carousel .carousel-nav-next {
     right: 0;
+    background: url('../../icons/testimonial-next.svg');
 }
 
 .carousel.image-carousel-full-width .carousel-slide {
