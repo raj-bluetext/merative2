@@ -54,6 +54,26 @@ export default {
       title.remove();
     }
 
+    const headingTwos = main.querySelectorAll('span.cmp-text__heading-h2');
+    if (headingTwos.length > 0) {
+      headingTwos.forEach((h2) => {
+        const newH2 = document.createElement('H2');
+        newH2.innerHTML += h2.innerHTML.trim();
+        h2.parentElement.append(newH2);
+        h2.remove();
+      });
+    }
+
+    const headingThrees = main.querySelectorAll('span.cmp-text__heading-h3');
+    if (headingThrees.length > 0) {
+      headingThrees.forEach((h3) => {
+        const newH3 = document.createElement('H3');
+        newH3.innerHTML += h3.innerHTML.trim();
+        h3.parentElement.append(newH3);
+        h3.remove();
+      });
+    }
+
     createMetadataBlock(main, document);
 
     // main page import - "element" is provided, i.e. a docx will be created
