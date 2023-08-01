@@ -1,0 +1,54 @@
+/* Breadcrumb CSS */
+
+.section.breadcrumb-container > div.breadcrumb-wrapper {
+  padding: unset;
+  width: 100%;
+  background-color: #F3F1ED;
+}
+
+.breadcrumb.block {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.breadcrumb.block .breadcrumb-links {
+  padding: 19px 0 !important;
+  font-family: var(--sans-serif-font-regular);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-160);
+  letter-spacing: var(--letter-spacing-001-em);
+}
+
+.breadcrumb.block .breadcrumb-links span.breadcrumb-link {
+  margin-right: 10px;
+}
+
+.breadcrumb.block .breadcrumb-links span.breadcrumb-link:not(.last) a {
+  text-decoration: none;
+  color: var(--neutral-carbon);
+}
+
+.breadcrumb.block .breadcrumb-links span.breadcrumb-link:hover, 
+.breadcrumb.block .breadcrumb-links span.breadcrumb-link.last {
+  color: var(--primary-purple);
+}
+
+.breadcrumb.block .breadcrumb-links span.breadcrumb-link:hover a,
+.breadcrumb.block .breadcrumb-links span.breadcrumb-link.last a {
+  color: var(--primary-purple);
+  text-decoration: underline;
+}
+
+@media only screen and (min-width: 1200px) {
+  .breadcrumb.block {
+    margin: 0 auto;
+    padding: unset;
+    width: var(--section-width-desktop);
+  }
+}
