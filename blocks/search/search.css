@@ -1,0 +1,39 @@
+/* Search Block CSS */
+
+.search.block form {
+  position: relative;
+  display: flex;
+  width: 700px;
+  height: 44px;
+  background-color: var(--neutral-bone);
+  border-bottom: 1px solid var(--neutral-carbon);
+}
+
+.search.block form input {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  padding: 8px 16px;
+  border: 0;
+  background-color: var(--neutral-bone);
+  font-family: var(--sans-serif-font-light);
+  font-size: var(--font-size-16);
+  letter-spacing: var(--letter-spacing-001-em);
+  line-height: var(--line-height-160);
+  font-weight: var(--font-weight-light);
+  color: var(--neutral-carbon);
+}
+
+.search.block form span.search-icon {
+  display: block;
+  position: relative;
+  background: url('../../icons/search.svg') no-repeat;
+  color: #000;
+  height: 24px;
+  width: 24px;
+  margin: 13px 13px 0 0;
+  padding: 0 23px 0 0;
+  min-width: 14px;
+}
