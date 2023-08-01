@@ -11,7 +11,8 @@ async function showResults() {
   // filter and redraw the results
   const ul = createTag('ul');
   index
-    .filter((row) => row.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter((row) => (row.title.toLowerCase().includes(searchTerm.toLowerCase())
+      || row.description.toLowerCase().includes(searchTerm.toLowerCase())))
     .forEach((row) => {
       const link = createTag('a', { href: row.path, 'aria-label': row.title }, row.title);
       const li = createTag('li', { class: 'search-result' }, link);
