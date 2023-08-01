@@ -221,9 +221,9 @@ export async function fetchFragment(path) {
 // auto block to create breadcrumb for support pages
 async function buildSupportBreadcrumb() {
   if ((getMetadata('template') === 'Support') && getMetadata('breadcrumb')) {
-    const header = document.querySelector('header');
+    const main = document.querySelector('main');
     const fragmentBlock = await fetchFragment(getMetadata('breadcrumb'));
-    header.appendChild(fragmentBlock);
+    main.prepend(fragmentBlock);
   }
 }
 
