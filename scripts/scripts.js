@@ -205,6 +205,28 @@ function buildBlogBreadCrumbBlock() {
   }
 }
 
+export async function fetchFragment(path) {
+  const resp = await fetch(`${path}.plain.html`);
+  if (resp.ok) {
+    const container = document.createElement('main');
+    container.innerHTML = await resp.text();
+    // eslint-disable-next-line no-use-before-define
+    decorateMain(container);
+    await loadBlocks(container);
+    return container.querySelector(':scope .section');
+  }
+  return null;
+}
+
+// auto block to create breadcrumb for support pages
+async function buildSupportBreadcrumb() {
+  if ((getMetadata('template') === 'Support') && getMetadata('breadcrumb')) {
+    const header = document.querySelector('header');
+    const fragmentBlock = await fetchFragment(getMetadata('breadcrumb'));
+    header.appendChild(fragmentBlock);
+  }
+}
+
 // auto block to get the pdf url and put it in page metadata
 function buildDocumentUrl(main) {
   if (getMetadata('template') === 'Document') {
@@ -736,6 +758,7 @@ async function loadLazy(doc) {
   if (!isBlockLibrary()) {
     loadHeader(doc.querySelector('header'));
     loadFooter(doc.querySelector('footer'));
+    await buildSupportBreadcrumb();
   }
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
