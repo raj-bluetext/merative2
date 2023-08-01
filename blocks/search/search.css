@@ -1,4 +1,13 @@
 /* Search Block CSS */
+.search.block {
+  width: 100%;
+  font-family: var(--sans-serif-font-light);
+  font-size: var(--font-size-16);
+  letter-spacing: var(--letter-spacing-001-em);
+  line-height: var(--line-height-160);
+  font-weight: var(--font-weight-light);
+  color: var(--neutral-carbon);
+}
 
 .search.block form {
   position: relative;
@@ -18,12 +27,6 @@
   padding: 8px 16px;
   border: 0;
   background-color: var(--neutral-bone);
-  font-family: var(--sans-serif-font-light);
-  font-size: var(--font-size-16);
-  letter-spacing: var(--letter-spacing-001-em);
-  line-height: var(--line-height-160);
-  font-weight: var(--font-weight-light);
-  color: var(--neutral-carbon);
 }
 
 .search.block form span.search-icon {
@@ -41,11 +44,29 @@
 .search.block div.results ul {
   max-height: 280px;
   overflow-y: auto;
+  padding: unset;
+}
+
+.search.block div.results ul li {
+  padding: 15px 16px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #e7e2da;
+}
+
+.search.block div.results ul li:hover {
+  background-color: #ebccff;
+}
+
+.search.block div.results ul li a {
+  text-decoration: none;
+  border: unset;
+  color: var(--neutral-carbon);
 }
 
 @media only screen and (min-width: 768px) {
   /* Tablet styles */
-  .search.block form {
+  .search.block {
     width: 700px;
   }
 }
