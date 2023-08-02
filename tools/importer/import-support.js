@@ -10,6 +10,12 @@ const createMetadataBlock = (main, document) => {
     meta.Title = title.innerHTML.replace(/[\n\t]/gm, '');
   }
 
+  const breadcrumb = document.querySelector('.breadcrumb .breadcrumb--primary');
+  if (breadcrumb) {
+    meta.Breadcrumb = '/fragments/breadcrumbs/curan';
+    breadcrumb.remove();
+  }
+
   // find the <meta property="og:description"> element
   // const desc = document.querySelector('[property="og:description"]');
   // if (desc) {
@@ -72,6 +78,23 @@ export default {
         h3.parentElement.append(newH3);
         h3.remove();
       });
+    }
+
+    // Check if the page has a Document Information right nav and import it as a block instead
+    const documentInfoSpan = main.querySelector('span.cmp-text__eyebrow-eyebrow');
+    if (documentInfoSpan.innerHTML === 'Document Information') {
+      const docInfo = documentInfoSpan.parentElement.parentElement;
+      if (docInfo) {
+        // Add Right Nav block
+        const cells = [
+          ['Right Nav'],
+          [docInfo.innerHTML],
+        ];
+        const table = WebImporter.DOMUtils.createTable(cells, document);
+        main.append(table);
+        // remove elements already added to blocks from main
+        docInfo.remove();
+      }
     }
 
     createMetadataBlock(main, document);
