@@ -3,10 +3,12 @@ import { createTag } from '../../scripts/scripts.js';
 export default async function decorate(block) {
   const breadcrumbLinks = createTag('div', { class: 'breadcrumb-links' });
   const links = block.querySelectorAll('a');
-  links.forEach((link, i) => {
+  links.forEach((link) => {
     link.parentElement.remove();
     const newLink = createTag('span', { class: 'breadcrumb-link' }, link);
-    if (i === (links.length - 1)) newLink.classList.add('last');
+    const linkUrl = new URL(link.href);
+    console.log(`linkUrl.pathname is ${linkUrl.pathname} window.location.pathname is ${window.location.pathname}`);
+    if (linkUrl.pathname === window.location.pathname) newLink.classList.add('active');
     breadcrumbLinks.appendChild(newLink);
     newLink.innerHTML += ' > ';
   });

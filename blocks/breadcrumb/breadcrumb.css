@@ -29,18 +29,18 @@
   margin-right: 10px;
 }
 
-.breadcrumb.block .breadcrumb-links span.breadcrumb-link:not(.last) a {
+.breadcrumb.block .breadcrumb-links span.breadcrumb-link:not(.active) a {
   text-decoration: none;
   color: var(--neutral-carbon);
 }
 
 .breadcrumb.block .breadcrumb-links span.breadcrumb-link:hover, 
-.breadcrumb.block .breadcrumb-links span.breadcrumb-link.last {
+.breadcrumb.block .breadcrumb-links span.breadcrumb-link.active {
   color: var(--primary-purple);
 }
 
 .breadcrumb.block .breadcrumb-links span.breadcrumb-link:hover a,
-.breadcrumb.block .breadcrumb-links span.breadcrumb-link.last a {
+.breadcrumb.block .breadcrumb-links span.breadcrumb-link.active a {
   color: var(--primary-purple);
   text-decoration: underline;
 }
