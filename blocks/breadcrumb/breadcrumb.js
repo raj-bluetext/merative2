@@ -7,7 +7,6 @@ export default async function decorate(block) {
     link.parentElement.remove();
     const newLink = createTag('span', { class: 'breadcrumb-link' }, link);
     const linkUrl = new URL(link.href);
-    console.log(`linkUrl.pathname is ${linkUrl.pathname} window.location.pathname is ${window.location.pathname}`);
     if (linkUrl.pathname === window.location.pathname) newLink.classList.add('active');
     breadcrumbLinks.appendChild(newLink);
     newLink.innerHTML += ' > ';
