@@ -94,10 +94,26 @@ export default {
       });
     }
 
+    // Handle bold text
+    const boldText = main.querySelectorAll('span.cmp-text__body-small-regular, span.cmp-text__body-normal-medium');
+    if (boldText.length > 0) {
+      boldText.forEach((txt) => {
+        const newText = document.createElement('STRONG');
+        newText.innerHTML += txt.innerHTML.trim();
+        txt.parentElement.append(newText);
+        txt.remove();
+      });
+    }
+
     // Check if the page has a Document Information right nav and import it as a block instead
     const documentInfoSpan = main.querySelector('span.cmp-text__eyebrow-eyebrow');
     if (documentInfoSpan.innerHTML === 'Document Information') {
-      const docInfo = documentInfoSpan.parentElement.parentElement;
+      // Update the text to H5
+      const newDocInfoSpan = document.createElement('H5');
+      newDocInfoSpan.innerHTML += documentInfoSpan.innerHTML.trim();
+      documentInfoSpan.parentElement.prepend(newDocInfoSpan);
+      documentInfoSpan.remove();
+      const docInfo = newDocInfoSpan.parentElement.parentElement;
       if (docInfo) {
         // Add Right Nav block
         const cells = [
