@@ -10,7 +10,7 @@ const createMetadataBlock = (main, document) => {
     meta.Title = title.innerHTML.replace(/[\n\t]/gm, '');
   }
 
-  const breadcrumb = document.querySelector('.breadcrumb .breadcrumb--primary');
+  const breadcrumb = document.querySelector('.breadcrumb.breadcrumb--primary');
   if (breadcrumb) {
     meta.Breadcrumb = '/fragments/breadcrumbs/curan';
     breadcrumb.remove();
@@ -77,6 +77,20 @@ export default {
         newH3.innerHTML += h3.innerHTML.trim();
         h3.parentElement.append(newH3);
         h3.remove();
+      });
+    }
+
+    // Handle Tables from the source content
+    const tables = main.querySelectorAll('table');
+    if (tables.length > 0) {
+      tables.forEach((table) => {
+        const cells = [
+          ['Table'],
+          [table.outerHTML],
+        ];
+        const newTable = WebImporter.DOMUtils.createTable(cells, document);
+        table.parentElement.append(newTable);
+        table.remove();
       });
     }
 
