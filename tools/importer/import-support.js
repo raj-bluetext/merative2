@@ -54,7 +54,7 @@ export default {
     const title = main.querySelector('span.cmp-text__heading-h1');
     if (title) {
       const h1 = document.createElement('H1');
-      h1.innerHTML += title.innerHTML.trim();
+      h1.innerHTML += title.innerHTML;
       main.prepend(h1);
       // remove elements already added to blocks from main
       title.remove();
@@ -64,7 +64,7 @@ export default {
     if (headingTwos.length > 0) {
       headingTwos.forEach((h2) => {
         const newH2 = document.createElement('H2');
-        newH2.innerHTML += h2.innerHTML.trim();
+        newH2.innerHTML += h2.innerHTML;
         h2.replaceWith(newH2);
       });
     }
@@ -73,7 +73,7 @@ export default {
     if (headingThrees.length > 0) {
       headingThrees.forEach((h3) => {
         const newH3 = document.createElement('H3');
-        newH3.innerHTML += h3.innerHTML.trim();
+        newH3.innerHTML += h3.innerHTML;
         h3.replaceWith(newH3);
       });
     }
@@ -97,7 +97,7 @@ export default {
     if (boldText.length > 0) {
       boldText.forEach((txt) => {
         const newText = document.createElement('STRONG');
-        newText.innerHTML += txt.innerHTML.trim();
+        newText.innerHTML += txt.innerHTML;
         txt.replaceWith(newText);
       });
     }
