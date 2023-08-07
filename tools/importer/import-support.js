@@ -65,8 +65,7 @@ export default {
       headingTwos.forEach((h2) => {
         const newH2 = document.createElement('H2');
         newH2.innerHTML += h2.innerHTML.trim();
-        h2.parentElement.append(newH2);
-        h2.remove();
+        h2.replaceWith(newH2);
       });
     }
 
@@ -75,8 +74,7 @@ export default {
       headingThrees.forEach((h3) => {
         const newH3 = document.createElement('H3');
         newH3.innerHTML += h3.innerHTML.trim();
-        h3.parentElement.append(newH3);
-        h3.remove();
+        h3.replaceWith(newH3);
       });
     }
 
@@ -100,8 +98,7 @@ export default {
       boldText.forEach((txt) => {
         const newText = document.createElement('STRONG');
         newText.innerHTML += txt.innerHTML.trim();
-        txt.parentElement.append(newText);
-        txt.remove();
+        txt.replaceWith(newText);
       });
     }
 
