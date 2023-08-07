@@ -107,7 +107,7 @@ export default {
 
     // Check if the page has a Document Information right nav and import it as a block instead
     const documentInfoSpan = main.querySelector('span.cmp-text__eyebrow-eyebrow');
-    if (documentInfoSpan.innerHTML === 'Document Information') {
+    if (documentInfoSpan && documentInfoSpan.innerHTML === 'Document Information') {
       // Update the text to H5
       const newDocInfoSpan = document.createElement('H5');
       newDocInfoSpan.innerHTML += documentInfoSpan.innerHTML.trim();
