@@ -105,6 +105,14 @@ export default {
       });
     }
 
+    // Need this to fix issue where b>span does not translate well like span>b
+    const boldSpans = main.querySelectorAll('b span');
+    if (boldSpans.length > 0) {
+      boldSpans.forEach((boldSpan) => {
+        boldSpan.parentElement.innerHTML = boldSpan.innerHTML.trim();
+      });
+    }
+
     // Check if the page has a Document Information right nav and import it as a block instead
     const documentInfoSpan = main.querySelector('span.cmp-text__eyebrow-eyebrow');
     if (documentInfoSpan && documentInfoSpan.innerHTML === 'Document Information') {
