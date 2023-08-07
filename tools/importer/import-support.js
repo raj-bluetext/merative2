@@ -114,6 +114,14 @@ export default {
       });
     }
 
+    // Fix empty strong tags
+    const strongs = main.querySelectorAll('strong');
+    if (strongs.length > 0) {
+      strongs.forEach((s) => {
+        if (!s.textContent) s.remove();
+      });
+    }
+
     // Check if the page has a Document Information right nav and import it as a block instead
     const documentInfoSpan = main.querySelector('span.cmp-text__eyebrow-eyebrow');
     if (documentInfoSpan && documentInfoSpan.innerHTML === 'Document Information') {
