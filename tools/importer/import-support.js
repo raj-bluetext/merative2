@@ -109,7 +109,8 @@ export default {
     const boldSpans = main.querySelectorAll('b span');
     if (boldSpans.length > 0) {
       boldSpans.forEach((boldSpan) => {
-        boldSpan.parentElement.innerHTML = boldSpan.innerHTML.trim();
+        boldSpan.innerHTML = `<b>${boldSpan.textContent.trim()}</b> `;
+        boldSpan.parentElement.replaceWith(boldSpan);
       });
     }
 
