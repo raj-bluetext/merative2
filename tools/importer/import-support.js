@@ -107,7 +107,7 @@ export default {
     if (boldSpans.length > 0) {
       boldSpans.forEach((boldSpan) => {
         boldSpan.innerHTML = `<b>${boldSpan.textContent.trim()}</b> `;
-        boldSpan.parentElement.replaceWith(boldSpan);
+        if (boldSpan.parentElement) boldSpan.parentElement.replaceWith(boldSpan);
       });
     }
 
