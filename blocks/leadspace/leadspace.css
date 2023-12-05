@@ -681,6 +681,16 @@ main div.leadspace-wrapper {
     letter-spacing: var(--letter-spacing-02-em);
   }
 
+  .leadspace.video .scroll-border-text {
+    display: flex;
+    gap: var(--gap-16);
+    font-size: var(--font-size-14);
+  }
+
+  .leadspace.video .scroll-border-text #scroll-to-next {
+    cursor: pointer;
+  }
+
   .leadspace.video .video-modal-content video {
     max-height: 581px;
     width: 1033px;
