@@ -137,7 +137,18 @@ async function init() {
     copyButton.disabled = true;
   });
 
-  selEl.querySelector('button.clear').addEventListener('click', () => {
+  const clearButton = selEl.querySelector('button.clear');
+  clearButton.addEventListener('click', () => {
+    // Remove the 'filtered' class from all tags
+    document.querySelectorAll('#results .tag').forEach((tag) => {
+      tag.closest('.path').classList.remove('filtered');
+    });
+  
+    // Remove the 'selected' class from all selected tags
+    document.querySelectorAll('.selected').forEach((selectedTag) => {
+      selectedTag.classList.remove('selected');
+    });
+  
     selectedOrder = [];
     displaySelected();
     copyButton.disabled = false;
