@@ -12,14 +12,13 @@
 /* Block - Content Text Body */
 .content-text-body h2,
 .content-text-body h3,
+
 .content-text-body h4 {
   margin: var(--spacer-element-11) 0 0 0;
 }
-.content-text-body h5 {
-  margin: var(--spacer-element-05) 0 0 0;
-}
 
 .content-text-body h5 {
+  margin: var(--spacer-element-05) 0 0 0;
   font-family: var(--sans-serif-font-light);
   font-size: var(--font-size-16);
   font-weight: 300;
