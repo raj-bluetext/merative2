@@ -193,6 +193,7 @@
   /* line height */
   --line-height-120: 120%;
   --line-height-160: 160%;
+  --line-height-8: 8px;
 
   /* letter spacing */
   --letter-spacing-0: 0;
@@ -213,6 +214,7 @@
   --spacer-element-08: 32px;
   --spacer-element-09: 40px;
   --spacer-element-10: 48px;
+  --spacer-element-11: 64px;
 
   /* layout spacers */
   --spacer-layout-01: 16px;
