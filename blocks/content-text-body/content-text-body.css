@@ -26,7 +26,10 @@
 
 .content-text-body li::marker {
   font-size: var(--font-size-21) !important;
-  line-height: var(--line-height-8);
+}
+
+.content-text-body ul li {
+  margin: var(--spacer-element-03) 0 0 0;
 }
 
 .content-text-body p,
