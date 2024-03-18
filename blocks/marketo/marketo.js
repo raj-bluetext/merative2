@@ -29,13 +29,6 @@ const embedMarketoForm = (marketoId, formId, successUrl) => {
           // Add an onSuccess handler
           // eslint-disable-next-line no-unused-vars
           form.onSuccess((values, followUpUrl) => {
-          // Adding drift script for chatbot
-                      if (fastlaneEnable) {
-                        drift.api.collectFormData(values, {
-                          campaignId: driftCampaignID,
-                          followupUrl: 'https://www.merative.com/',
-                        });
-                      }
             // Take the lead to a different page on successful submit,
             // ignoring the form's configured followUpUrl
             location.href = successUrl;
