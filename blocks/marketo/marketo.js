@@ -30,6 +30,16 @@ const embedMarketoForm = (marketoId, formId, successUrl) => {
           // eslint-disable-next-line no-unused-vars
           form.onSuccess((values, followUpUrl) => {
             // Take the lead to a different page on successful submit,
+            MktoForms2.whenReady
+             (function (form) {
+               form.onSuccess(function (values) {
+                drift.api.collectFormData(values, {
+                   campaignId: 2787244,
+                     followupUrl: 'https://www.merative.com'
+                         });
+                return false;
+               });
+            });
             // ignoring the form's configured followUpUrl
             location.href = successUrl;
             if (window._satellite) {
