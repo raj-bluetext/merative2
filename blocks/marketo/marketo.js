@@ -20,27 +20,24 @@ const loadScript = (url, attrs) => {
   return script;
 };
 
-const embedMarketoForm = (marketoId, formId, successUrl) => {
+const embedMarketoForm = (marketoId, formId, successUrl, driftCampaignID, fastlaneEnable) => {
   if (formId && marketoId) {
     const mktoScriptTag = loadScript('//go.merative.com/js/forms2/js/forms2.min.js');
+
     mktoScriptTag.onload = () => {
       if (successUrl) {
         window.MktoForms2.loadForm('//go.merative.com', `${marketoId}`, formId, (form) => {
           // Add an onSuccess handler
           // eslint-disable-next-line no-unused-vars
           form.onSuccess((values, followUpUrl) => {
+          // Adding drift script for chatbot
+                      if (fastlaneEnable) {
+                        drift.api.collectFormData(values, {
+                          campaignId: Number(driftCampaignID),
+                          followupUrl: '/thank-you',
+                        });
+                      }
             // Take the lead to a different page on successful submit,
-               window.MktoForms2.whenReady
-                 (function (form) {
-                   form.onSuccess(function (values) {
-                    drift.api.collectFormData(values, {
-                       campaignId: 2787244,
-                         followupUrl: 'https://www.merative.com'
-                             });
-                    return false;
-                   });
-                });
-
             // ignoring the form's configured followUpUrl
             location.href = successUrl;
             if (window._satellite) {
@@ -94,6 +91,8 @@ export default function decorate(block) {
   const formTitle = blockConfig['form-title'];
   const formId = blockConfig['form-id'];
   const successUrl = blockConfig['success-url'];
+  const driftCampaignID = blockConfig['drift-campaign-id'];
+  const fastlaneEnable = JSON.parse(blockConfig['fastlane-enable'] || false);
 
   if (formId && marketoId) {
     // Create the form element
@@ -114,7 +113,7 @@ export default function decorate(block) {
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         // Embed the Marketo form
-        embedMarketoForm(marketoId, formId, successUrl);
+        embedMarketoForm(marketoId, formId, successUrl, driftCampaignID, fastlaneEnable);
         observer.disconnect();
       }
     });
