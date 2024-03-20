@@ -31,12 +31,28 @@ const embedMarketoForm = (marketoId, formId, successUrl, driftCampaignID, fastla
           // eslint-disable-next-line no-unused-vars
           form.onSuccess((values, followUpUrl) => {
           // Adding drift script for chatbot
+                      //if (fastlaneEnable) {
+                      //  drift.api.collectFormData(values, {
+                      //    campaignId: Number(driftCampaignID),
+                      //    followupUrl: '/thank-you',
+                      //  });
+                      //}
+
                       if (fastlaneEnable) {
-                        drift.api.collectFormData(values, {
-                          campaignId: Number(driftCampaignID),
-                          followupUrl: '/thank-you',
-                        });
+                      window.MktoForms2.whenReady
+
+                                             (function (form) {
+                                               form.onSuccess(function (values) {
+                                                drift.api.collectFormData(values, {
+                                                   campaignId: Number(driftCampaignID),
+                                                     followupUrl: 'https://www.merative.com'
+                                                         });
+                                                return false;
+                                               });
+                                            });
                       }
+
+
             // Take the lead to a different page on successful submit,
             // ignoring the form's configured followUpUrl
             location.href = successUrl;
